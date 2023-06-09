@@ -1,4 +1,11 @@
 const { Command } = require("commander");
+const {
+  listContacts,
+  getContactById,
+  addContact,
+  removeContact,
+} = require("./contacts");
+
 const program = new Command();
 program
   .option("-a, --action <type>", "choose action")
@@ -10,13 +17,6 @@ program
 program.parse(process.argv);
 
 const argv = program.opts();
-
-const {
-  listContacts,
-  getContactById,
-  addContact,
-  removeContact,
-} = require("./contacts");
 
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
